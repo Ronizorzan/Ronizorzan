@@ -1,0 +1,11 @@
+['Advogado', 'Arquiteto', 'Cientista de Dados', 'Contador', 'Dentista', 'Empresário', 'Engenheiro', 'Médico', 'Programador']
+
+['Alugada', 'Outros', 'Própria']
+escolaridades = ['Ens.Fundamental', 'Ens.Médio', 'PósouMais', 'Superior']
+
+['Baixo', 'Bom', 'Justo', 'MuitoBom']
+
+['Casado', 'Divorciado', 'Solteiro', 'Víuvo']
+
+['AgileXplorer', 'DoubleDuty', 'EcoPrestige', 'ElegantCruise', 'SpeedFury', 'TrailConqueror', 'VoyageRoamer', 'WorkMaster']
+

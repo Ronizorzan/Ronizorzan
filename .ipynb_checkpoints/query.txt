@@ -1,0 +1,13 @@
+select cl.estado,
+		cl.sexo,
+		iv.valortotal,
+		pr.produto,
+		vn.data,
+		cl.status
+	
+from clientes cl
+join vendas vn on cl.idcliente = vn.idcliente
+join itensvenda iv on vn.idvenda = iv.idvenda
+join produtos pr on iv.idproduto = pr.idproduto
+group by cl.idcliente, iv.valortotal, pr.produto, vn.data
+		
