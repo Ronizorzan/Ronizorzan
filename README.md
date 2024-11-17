@@ -1,9 +1,8 @@
  👋 Olá
 - 🔭 Eu sou Ronivan
-- 🌱 Eu estou atualmente estudando processamento de linguagem natural
-- 📫 Também estou trabalhando em projetos de ciências de dados como Tunning de Modelos, classificação, agrupamentos
-- 😄 Pra mim a ciência de dados é uma das profissões mais desafiadoras e fascinantes da atualidade "e eu gosto do desafio", por isso estou sempre atualizado para ser capaz de aceitar o desafio
+- 🌱 Eu estou atualmente estudando Técnicas Estatísticas Avançadas 
+- 📫 Também estou trabalhando em projetos de ciências de dados como Redes Neurais, séries Temporais e Aplicações Web com Streamlit
+- 😄 Pra mim a ciência de dados é uma das profissões mais desafiadoras e fascinantes da atualidade (principalmente machine learning) por isso procuro estar sempre atualizado com as principais técnicas na área
 - ⚡ Gosto de tudo que tem à ver com tecnologia
--  👋 A gente se vê por aí
 
 
