@@ -3,29 +3,31 @@ from flask import Flask, request, jsonify
 import numpy as np
 import pandas as pd
 from funcoes import *
-from tendorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 import joblib
 import const
-from utilidades import *
 
+from utilidades import *
+import sys
 
 
 #Implantação da API
 try:
     app = Flask(__name__)
+    
     modelo = load_model('meu_modelo.keras')
-    seletor = joblib.load("selector.joblib")
-
     
     @app.route('/predict', methods = ['POST'])
+    
     def predictions():
         input_data = request.get_json()
+    
         df = pd.DataFrame(input_data)
         df = load_scalers(df,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem','proporcaosolicitadototal'] )
         df = load_encoders(df, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
-        df = seletor.transform(df)
     
         predictions = modelo.predict(df)
+    
         return jsonify(predictions.tolist())
     
     
@@ -38,4 +40,4 @@ except Exception as e:
     print(f'Erro ao processar os dados: {e}')
         
     
-    
+    sys.exit(1)

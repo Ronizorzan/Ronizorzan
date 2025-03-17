@@ -4,14 +4,13 @@ import streamlit as st
 import yaml
 
 
-st.title("Avaliação de crédito")
+#Configuração da página
+st.set_page_config(page_title="Avaliação de Crédito", layout="centered", initial_sidebar_state="expanded")
 
 #Arquivos de configuração
 with open('config.yaml', 'r') as file:
     config = yaml.safe_load(file)
-    url = config['url_api']['url']
-
-    
+    url = config['url_api']['url']    
 
 
 #Variáveis para preencher as caixas de seleção
@@ -36,8 +35,8 @@ with st.form(key = 'prediction_form'):
     estadocivil = st.selectbox("Estado civil", estados_civis)
     score = st.selectbox("Score", scores)
     produto = st.selectbox("Produto", produtos)
-    valorsolicitado = st.number_input("Valor solicitado", min_value=0.0, value=0.0, step=1000.0)        
-    valortotalbem = st.number_input("Valor total do bem", min_value=0.0, value=0.0, step=1000.0)
+    valorsolicitado = st.number_input("Valor solicitado", min_value=0.0, value=10000.0, step=1000.0)        
+    valortotalbem = st.number_input("Valor total do bem", min_value=0.0, value=10000.0, step=1000.0)
 
 
     submit_button = st.form_submit_button(label= "Consultar")
@@ -68,16 +67,16 @@ if submit_button:
         predictions = response.json()
         probabilidade = predictions[0][0] * 100
         classe = "Bom" if probabilidade > 50 else "Ruim"
-        st.success(f'Probabilidade:{probabilidade:.2f}%')
-        st.success(f"Classe: {classe}")
+        if classe=="Bom":
+            st.success(f"Classe: {classe}")
+            st.success(f'Probabilidade:{probabilidade:.2f}%')
+        else:
+            st.error(f"Classe: {classe}")
+            st.error(f"Probabilidade: {probabilidade:.2f}%")
+            
 
     else:
         st.error(f"Erro ao obter previsão: {response.status_code}")
-
-
-
-
-
 
 
 
