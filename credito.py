@@ -9,7 +9,7 @@ import yaml
 st.set_page_config(page_title="Avaliação de Crédito", layout="centered", initial_sidebar_state="expanded")
 
 #Arquivos de configuração
-with open('config.yaml', 'r') as file:
+with open('secrets.toml', 'r') as file:
     config = yaml.safe_load(file)
     url = config['url_api']['url']    
 
