@@ -11,7 +11,8 @@ st.set_page_config(page_title="Avaliação de Crédito", layout="centered", init
 #Arquivos de configuração
 with open('.streamlit\secrets.toml', 'r') as file:
     config = yaml.safe_load(file)
-    url = config['url_api']['url']    
+    url = st.secrets["config_key"]
+    #url = config['url_api']['url']    
 
 
 #Variáveis para preencher as caixas de seleção
