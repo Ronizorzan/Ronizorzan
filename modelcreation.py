@@ -3,7 +3,6 @@
 #importação das bibliotecas
 from keras.models import Sequential
 from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import LabelEncoder, StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import RFE
 from utilidades import *
@@ -17,11 +16,11 @@ from sklearn.metrics import classification_report, accuracy_score, confusion_mat
 #Consulta no banco de dados
 df = fetch_data_from_db(const.consulta_sql)
 
+#Transformação de Tipos e Criação de novo atributo
 df['idade'] = df['idade'].astype(int)
 df['valortotalbem'] = df['valortotalbem'].astype(float)
 df['valorsolicitado'] = df['valorsolicitado'].astype(float)
 df['proporcaosolicitadototal'] = df['valorsolicitado'] / df['valortotalbem']
-df['proporcaosolicitadototal'] = df['proporcaosolicitadototal'].astype(float)
 
 
 lista = ['Advogado', 'Arquiteto', 'Cientista de Dados', 'Contador','Dentista','Empresário', 'Engenheiro','Médico','Programador'] #Profissões Válidas
@@ -55,7 +54,7 @@ x_treino = save_encoders(x_treino, ['profissao', 'tiporesidencia',  'escolaridad
 x_teste = save_encoders(x_teste, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
 
 #Carregamento do Seletor de Atributos
-seletor = RFE(RandomForestClassifier(n_estimators=500), n_features_to_select=6, step=1)
+seletor = RFE(RandomForestClassifier(n_estimators=500), n_features_to_select=5, step=1)
 x_treino = seletor.fit(x_treino, y_treino).transform(x_treino)
 x_teste = seletor.transform(x_teste)
 joblib.dump(seletor, "objects/seletor.joblib")
@@ -70,16 +69,16 @@ y_teste = np.array([mapeamento[item] for item in y_teste])
 #Empilhamento das camadas das redes neurais
 modelo = Sequential()
 modelo.add(Dense(10, activation = 'relu', input_dim = x_treino.shape[1]))
-modelo.add(Dropout(0.1))
+modelo.add(Dropout(0.2))
 modelo.add(Dense(10, activation = 'relu'))
-modelo.add(Dropout(0.1))
+modelo.add(Dropout(0.2))
 modelo.add(Dense(10, activation = 'relu'))
-modelo.add(Dropout(0.1))
+modelo.add(Dropout(0.2))
 modelo.add(Dense(1, activation = 'sigmoid'))
 
 #Compilação e treinamento
 modelo.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-modelo.fit(x_treino, y_treino, epochs = 500, batch_size = 12, validation_data=(x_teste, y_teste))
+modelo.fit(x_treino, y_treino, epochs = 500, batch_size = 24, validation_data=(x_teste, y_teste))
 
 modelo.save('meu_modelo.keras')
 

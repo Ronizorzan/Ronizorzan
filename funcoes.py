@@ -3,25 +3,38 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler, LabelEncoder
 from fuzzywuzzy import process
 import joblib
+from time import time
 
+
+#Função para monitoramento de desempenho
+def monitor_funcoes(func):
+    def contador_tempo(*args, **kwargs):
+        hora_inicial = time()
+        resultado = func(*args, **kwargs)
+        hora_final = time()
+        print("Função {} executada em {:.2f} segundos ".format(func.__name__, (hora_final - hora_inicial )))
+        return resultado
+    return contador_tempo
 
 
 #Função para tratamento de nulos
+@monitor_funcoes
 def substitui_nulos(df):
     for coluna in df.columns:
         if df[coluna].dtype == 'object':
             moda = df[coluna].mode()[0]
-            df[coluna].fillna(moda, inplace = True)
+            df.fillna({coluna: moda}, inplace = True)
 
 
         else:
             mediana = df[coluna].median()
-            df[coluna].fillna(mediana, inplace = True)
+            df.fillna({coluna: mediana}, inplace = True)
     
     return df
 
 
 #Função para Correção de Erros de digitação
+@monitor_funcoes
 def corrigir_erros_digitacao(df, coluna, lista_valida):
     for i, valor in enumerate(df[coluna]):
         valor_str = str(valor) if pd.notnull(valor) else valor
@@ -34,6 +47,7 @@ def corrigir_erros_digitacao(df, coluna, lista_valida):
 
 
 #Função para tratamento de outliers
+@monitor_funcoes
 def tratar_outliers(df, coluna, minimo, maximo):
     mediana = df[(df[coluna] > minimo) & (df[coluna] < maximo)][coluna].median()
     df[coluna] = df[coluna].apply(lambda x : mediana if x < minimo or x > maximo else x)
@@ -42,6 +56,7 @@ def tratar_outliers(df, coluna, minimo, maximo):
 
 
 #Função para padronização
+@monitor_funcoes
 def save_scalers(df, nome_colunas):
     for nome_coluna in nome_colunas:
         scaler = StandardScaler()
@@ -52,6 +67,7 @@ def save_scalers(df, nome_colunas):
 
 
 #Função para codificação
+@monitor_funcoes
 def save_encoders(df, nome_colunas):
     for nome_coluna in nome_colunas:
         labelencoder = LabelEncoder()
@@ -62,6 +78,7 @@ def save_encoders(df, nome_colunas):
 
 
 #Função para carregamento dos padronizadores
+@monitor_funcoes
 def load_scalers(df, nome_colunas):
     for nome_coluna in nome_colunas:
         arquivo_scaler = f'.\objects\scalers{nome_coluna}.joblib'
@@ -72,6 +89,7 @@ def load_scalers(df, nome_colunas):
 
 
 #Função para carregamento dos codificadores
+@monitor_funcoes
 def load_encoders(df, nome_colunas):
     for nome_coluna in nome_colunas:
         arquivo_encoder = f'.\objects\encoders{nome_coluna}.joblib'
@@ -79,6 +97,14 @@ def load_encoders(df, nome_colunas):
         df[nome_coluna] = encoder.transform(df[nome_coluna])
 
     return df
+
+
+
+
+
+    
+
+
 
     
 

@@ -4,6 +4,7 @@ import streamlit as st
 import yaml
 
 
+
 #Configuração da página
 st.set_page_config(page_title="Avaliação de Crédito", layout="centered", initial_sidebar_state="expanded")
 
@@ -35,34 +36,34 @@ with st.form(key = 'prediction_form'):
     estadocivil = st.selectbox("Estado civil", estados_civis)
     score = st.selectbox("Score", scores)
     produto = st.selectbox("Produto", produtos)
-    valorsolicitado = st.number_input("Valor solicitado", min_value=0.0, value=10000.0, step=1000.0)        
-    valortotalbem = st.number_input("Valor total do bem", min_value=0.0, value=10000.0, step=1000.0)
+    valorsolicitado = st.number_input("Valor solicitado", min_value=1000.0, value=10000.0, step=1000.0)        
+    valortotalbem = st.number_input("Valor total do bem", min_value=1000.0, value=10000.0, step=1000.0)
 
 
     submit_button = st.form_submit_button(label= "Consultar")
 
 
 if submit_button:
+        
     dados_novos = {
-        'profissao': [profissao],
-        'tempoprofissao' : [tempoprofissao],
-        'renda' : [renda],
-        'tiporesidencia': [tiporesidencia],
-        'escolaridade': [escolaridade],
-        'idade': [idade],
-        'dependentes': [dependentes],
-        'estadocivil': [estadocivil],
-        'score': [score],
-        'produto': [produto],
-        'valorsolicitado': [valorsolicitado],
-        'valortotalbem': [valortotalbem],
-        'proporcaosolicitadototal': [valorsolicitado / valortotalbem]
-    }
+    'profissao': [profissao],
+    'tempoprofissao' : [tempoprofissao],
+    'renda' : [renda],
+    'tiporesidencia': [tiporesidencia],
+    'escolaridade': [escolaridade],
+    'score': [score],
+    'idade': [idade],
+    'dependentes': [dependentes],
+    'estadocivil': [estadocivil],
+    'produto': [produto],
+    'valorsolicitado': [valorsolicitado],
+    'valortotalbem': [valortotalbem],
+    'proporcaosolicitadototal': [valorsolicitado / valortotalbem]
+}
 
 
     response = requests.post(url, json=dados_novos)
-
-
+    
     if response.status_code == 200:
         predictions = response.json()
         probabilidade = predictions[0][0] * 100
@@ -72,12 +73,15 @@ if submit_button:
             st.success(f'Probabilidade:{probabilidade:.2f}%')
         else:
             st.error(f"Classe: {classe}")
+            probabilidade = 100 - probabilidade
             st.error(f"Probabilidade: {probabilidade:.2f}%")
-            
+                
 
     else:
         st.error(f"Erro ao obter previsão: {response.status_code}")
+        
 
+    
 
 
 

@@ -1,9 +1,8 @@
 #Importação das bibliotecas
 from flask import Flask, request, jsonify
-import numpy as np
 import pandas as pd
 from funcoes import *
-from tendorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 import joblib
 import const
 from utilidades import *
@@ -14,7 +13,7 @@ from utilidades import *
 try:
     app = Flask(__name__)
     modelo = load_model('meu_modelo.keras')
-    seletor = joblib.load("selector.joblib")
+    seletor = joblib.load("objects\seletor.joblib")
 
     
     @app.route('/predict', methods = ['POST'])
