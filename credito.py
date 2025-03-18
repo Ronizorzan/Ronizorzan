@@ -9,9 +9,9 @@ import yaml
 st.set_page_config(page_title="Avaliação de Crédito", layout="centered", initial_sidebar_state="expanded")
 
 #Arquivos de configuração
-with open('.streamlit\secrets.toml', 'r') as file:
-    config = yaml.safe_load(file)
-    url = st.secrets["config_key"]
+#with open('.streamlit\secrets.toml', 'r') as file:
+    #config = yaml.safe_load(file)
+url = st.secrets["config_key"]
     #url = config['url_api']['url']    
 
 
