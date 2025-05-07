@@ -58,7 +58,7 @@ X_teste = save_encoders(X_teste, ['profissao', 'tiporesidencia',  'escolaridade'
 seletor = RFE(RandomForestClassifier(n_estimators=500), n_features_to_select=6, step=1)
 X_treino = seletor.fit(X_treino, y_treino).transform(X_treino)
 X_teste = seletor.transform(X_teste)
-joblib.dump(seletor, "objects\seletor.joblib")
+joblib.dump(seletor, "objects/seletor.joblib")
 
 
 #Codificação Manual (Ruim receberá 0 e Bom receberá 1)
