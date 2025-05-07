@@ -24,7 +24,7 @@ estados_civis = ['Casado', 'Divorciado', 'Solteiro', 'Víuvo']
 produtos = ['AgileXplorer', 'DoubleDuty', 'EcoPrestige', 'ElegantCruise', 'SpeedFury', 'TrailConqueror', 'VoyageRoamer', 'WorkMaster']
 
 with st.sidebar:
-        acuracia = load("objects\acuracia.npy") #Exibição da acurácia na barra lateral
+        acuracia = load("objects/acuracia.npy") #Exibição da acurácia na barra lateral
         st.markdown(f"<span style='font-size: 20px; font-weight: bold'>Acurácia do Modelo: ---</span>\
                     <span style='font-size: 25px; font-weight: bold; color: #008000'>{acuracia*100:.2f}%", unsafe_allow_html=True) 
         st.text("")        
