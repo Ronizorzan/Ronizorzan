@@ -91,4 +91,4 @@ yfinance==0.2.37
 zipp==3.18.0
 fuzzywuzzy==0.18.0
 tensorflow-cpu==2.19.0
-psycopg2==2.9.10
+psycopg2
