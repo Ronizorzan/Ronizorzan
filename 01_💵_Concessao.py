@@ -11,10 +11,7 @@ from numpy import load
 #Configuração da página
 st.set_page_config(page_title="Avaliação de Crédito", layout="centered", initial_sidebar_state="expanded")
 
-#Arquivos de configuração
-with open('config.yaml', 'r') as file:
-    config = yaml.safe_load(file)    
-    url = config['url_api']['url']    
+    
 
 
 #Variáveis para preencher as caixas de seleção

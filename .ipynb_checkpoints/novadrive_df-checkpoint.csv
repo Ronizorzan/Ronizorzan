@@ -1,0 +1,151 @@
+profissao,tempoprofissao,renda,tiporesidencia,escolaridade,score,idade,dependentes,estadocivil,produto,valorsolicitado,valortotalbem,classe
+Cientista de Dados,24,58660.0,Outros,Ens.Médio,MuitoBom,58.0,0,Solteiro,VoyageRoamer,84623.00,350000.00,bom
+Empresário,21,46557.0,Outros,Ens.Médio,MuitoBom,37.0,2,Víuvo,EcoPrestige,126855.00,500000.00,bom
+Dentista,13,43939.0,Própria,Ens.Médio,Bom,23.0,0,Casado,DoubleDuty,127151.00,320000.00,ruim
+Engenheiro,10,37262.0,Própria,Superior,Baixo,35.0,0,Divorciado,AgileXplorer,28767.00,250000.00,bom
+Contador,6,52606.0,Própria,PósouMais,Justo,27.0,0,Casado,TrailConqueror,199564.00,400000.00,ruim
+Arquiteto,37,55222.0,Alugada,Ens.Médio,MuitoBom,54.0,2,Víuvo,SpeedFury,271083.00,800000.00,bom
+Programador,31,23943.0,Alugada,Ens.Médio,MuitoBom,33.0,0,Divorciado,AgileXplorer,123944.00,250000.00,bom
+Engenheiro,30,58952.0,Alugada,Superior,MuitoBom,26.0,0,Víuvo,SpeedFury,307164.00,800000.00,bom
+Programador,36,21267.0,Alugada,PósouMais,MuitoBom,27.0,2,Víuvo,AgileXplorer,72006.00,250000.00,bom
+Empresário,8,38942.0,Outros,PósouMais,Justo,54.0,2,Víuvo,EcoPrestige,138777.00,500000.00,bom
+Advogado,12,21585.0,Alugada,Ens.Fundamental,MuitoBom,31.0,0,Divorciado,TrailConqueror,87189.00,400000.00,bom
+Empresário,37,25258.0,Outros,PósouMais,Baixo,70.0,2,Divorciado,VoyageRoamer,130105.00,350000.00,ruim
+Programador,28,35795.0,Própria,Ens.Médio,Bom,68.0,0,Casado,WorkMaster,130911.00,280000.00,ruim
+Empresário,28,21021.0,Alugada,Ens.Médio,MuitoBom,69.0,0,Casado,TrailConqueror,154751.00,400000.00,ruim
+Dentista,16,17789.0,Própria,Ens.Fundamental,MuitoBom,27.0,0,Solteiro,AgileXplorer,250000.00,53103.00,bom
+Dentista,20,22695.0,Própria,Superior,MuitoBom,48.0,0,Víuvo,ElegantCruise,130268.00,300000.00,ruim
+Arquiteto,31,37159.0,Alugada,Ens.Fundamental,Baixo,48.0,0,Solteiro,AgileXplorer,102127.00,250000.00,ruim
+Programador,34,28792.0,Própria,Ens.Médio,MuitoBom,63.0,2,Víuvo,AgileXplorer,49694.00,250000.00,bom
+,11,51551.0,Outros,Ens.Fundamental,Baixo,66.0,0,Divorciado,VoyageRoamer,173156.00,350000.00,ruim
+Cientista de Dados,31,57819.0,Alugada,PósouMais,Baixo,43.0,0,Casado,DoubleDuty,67730.00,320000.00,bom
+Dentista,15,32185.0,Outros,Ens.Médio,Justo,69.0,1,Víuvo,EcoPrestige,76847.00,500000.00,bom
+Arquiteto,24,30627.0,Outros,PósouMais,Justo,34.0,1,Casado,TrailConqueror,41446.00,400000.00,bom
+Cientista de Dados,10,50740.0,Própria,Ens.Fundamental,Justo,56.0,1,Divorciado,EcoPrestige,194842.00,500000.00,bom
+Engenheiro,19,51165.0,Própria,PósouMais,Bom,47.0,4,Víuvo,DoubleDuty,320000.00,123258.00,bom
+Advogado,28,26873.0,Alugada,Ens.Fundamental,MuitoBom,46.0,2,Divorciado,DoubleDuty,151306.00,320000.00,ruim
+Adv.,39,20860.0,Alugada,Ens.Fundamental,Bom,37.0,0,Víuvo,DoubleDuty,139244.00,320000.00,ruim
+Engenheiro,5,21685.0,Alugada,Ens.Fundamental,MuitoBom,53.0,0,Divorciado,SpeedFury,162661.00,800000.00,bom
+Cientista de Dados,10,50740.0,Própria,Ens.Fundamental,Justo,56.0,1,Divorciado,EcoPrestige,194842.00,500000.00,ruim
+Engenheiro,11,9443.0,Alugada,Ens.Médio,MuitoBom,26.0,1,Solteiro,SpeedFury,800000.00,331687.00,bom
+Cientista de Dados,17,21899.0,Outros,PósouMais,Justo,25.0,2,Casado,SpeedFury,299565.00,800000.00,ruim
+Programador,39,26265.0,Outros,Superior,Bom,44.0,0,Casado,DoubleDuty,66652.00,320000.00,bom
+Advogado,40,17457.0,Própria,Ens.Fundamental,MuitoBom,46.0,4,Víuvo,DoubleDuty,320000.00,152644.00,bom
+Médico,32,31534.0,Própria,Ens.Médio,MuitoBom,44.0,0,Víuvo,DoubleDuty,126076.00,320000.00,ruim
+Dentista,30,48693.0,Própria,Ens.Fundamental,Baixo,28.0,1,Casado,VoyageRoamer,154025.00,350000.00,ruim
+Advogado,19,31653.0,Alugada,Superior,Justo,56.0,0,Víuvo,SpeedFury,136012.00,800000.00,bom
+Empresário,34,38431.0,Outros,PósouMais,Justo,29.0,1,Casado,DoubleDuty,150459.00,320000.00,ruim
+Cientista de Dados,12,56497.0,Outros,Superior,Bom,30.0,1,Víuvo,VoyageRoamer,350000.00,164363.00,ruim
+Médico,37,22612.0,Própria,Ens.Fundamental,Bom,41.0,0,Víuvo,AgileXplorer,111046.00,250000.00,ruim
+Dentista,7,32666.0,Alugada,Superior,MuitoBom,52.0,2,Solteiro,VoyageRoamer,44563.00,350000.00,bom
+Engenheiro,6,23890.0,Própria,Ens.Médio,Baixo,68.0,1,Solteiro,AgileXplorer,49280.00,250000.00,bom
+Empresário,5,43483.0,Alugada,Ens.Fundamental,Bom,49.0,1,Casado,DoubleDuty,115715.00,320000.00,ruim
+Empresário,33,39118.0,Própria,Ens.Médio,MuitoBom,27.0,2,Divorciado,ElegantCruise,70139.00,300000.00,bom
+Médico,15,28433.0,Alugada,Superior,Baixo,52.0,0,Casado,SpeedFury,268611.00,800000.00,bom
+Cientista de Dados,32,23556.0,Alugada,Ens.Fundamental,MuitoBom,51.0,0,Víuvo,TrailConqueror,64429.00,400000.00,bom
+Empresário,21,7814.0,Alugada,Ens.Fundamental,Justo,56.0,4,Solteiro,TrailConqueror,400000.00,105404.00,ruim
+Dentista,200,48693.0,Própria,Ens.Fundamental,Baixo,27.0,1,Casado,VoyageRoamer,154025.00,350000.00,ruim
+Empresário,27,49127.0,Própria,PósouMais,MuitoBom,51.0,2,Divorciado,DoubleDuty,113891.00,320000.00,bom
+Programador,6,43247.0,Alugada,Superior,Baixo,58.0,0,Víuvo,AgileXplorer,52638.00,250000.00,bom
+Contador,7,57065.0,Alugada,Ens.Médio,Baixo,23.0,2,Casado,SpeedFury,171520.00,800000.00,bom
+,32,31016.0,Alugada,Ens.Médio,Baixo,40.0,2,Víuvo,EcoPrestige,86646.00,500000.00,bom
+Empresário,23,46854.0,Própria,Ens.Fundamental,MuitoBom,31.0,2,Solteiro,SpeedFury,127441.00,800000.00,bom
+Dentista,30,22433.0,Própria,Superior,Justo,44.0,2,Casado,EcoPrestige,249625.00,500000.00,ruim
+Empresário,38,59976.0,Própria,Ens.Médio,Bom,27.0,0,Víuvo,SpeedFury,215074.00,800000.00,bom
+Cientista de Dados,20,53159.0,Própria,Ens.Fundamental,Justo,58.0,2,Casado,ElegantCruise,109353.00,300000.00,ruim
+Engenheiro,19,37568.0,Alugada,Ens.Fundamental,MuitoBom,70.0,0,Divorciado,AgileXplorer,84435.00,250000.00,ruim
+Contador,13,59188.0,Alugada,Superior,Bom,43.0,2,Casado,TrailConqueror,110610.00,400000.00,bom
+Engenheiro,7,55920.0,Outros,Ens.Fundamental,Bom,47.0,0,Casado,AgileXplorer,106816.00,250000.00,bom
+Engenheiro,36,45658.0,Própria,Ens.Médio,Bom,58.0,0,Divorciado,VoyageRoamer,63315.00,350000.00,bom
+Dentista,36,29692.0,Própria,PósouMais,Baixo,69.0,0,Casado,AgileXplorer,58446.00,250000.00,bom
+Advogado,11,51551.0,Outros,Ens.Fundamental,Baixo,66.0,0,Divorciado,VoyageRoamer,173156.00,350000.00,bom
+Engenheiro,8,41271.0,Outros,Superior,MuitoBom,27.0,0,Casado,AgileXplorer,84545.00,250000.00,ruim
+Dentista,0,36023.0,Própria,Ens.Fundamental,MuitoBom,24.0,0,Casado,DoubleDuty,158858.00,320000.00,ruim
+Programador,36,21267.0,Alugada,PósouMais,MuitoBom,28.0,2,Víuvo,AgileXplorer,72006.00,250000.00,bom
+Arquiteto,36,33067.0,Alugada,PósouMais,MuitoBom,31.0,2,Víuvo,WorkMaster,28290.00,280000.00,bom
+Empresário,37,21016.0,Alugada,PósouMais,Bom,33.0,2,Víuvo,VoyageRoamer,87340.00,350000.00,bom
+Dentista,22,31837.0,Outros,Superior,MuitoBom,22.0,0,Víuvo,WorkMaster,87972.00,280000.00,ruim
+Advogado,5,44253.0,Própria,Superior,MuitoBom,47.0,0,Divorciado,VoyageRoamer,171715.00,350000.00,bom
+Médico,19,39769.0,Própria,Ens.Médio,Baixo,63.0,0,Solteiro,VoyageRoamer,54520.00,350000.00,bom
+Programador,23,28392.0,Alugada,PósouMais,Bom,55.0,0,Casado,EcoPrestige,111151.00,500000.00,bom
+Empresário,24,50535.0,Alugada,Superior,Baixo,53.0,0,Víuvo,VoyageRoamer,40711.00,350000.00,bom
+Arquiteto,19,20189.0,Alugada,Superior,Bom,66.0,0,Divorciado,TrailConqueror,182827.00,400000.00,ruim
+Empresário,7,42662.0,Própria,PósouMais,Bom,57.0,2,Solteiro,EcoPrestige,175620.00,500000.00,ruim
+Arquiteto,24,30627.0,Outros,PósouMais,Justo,34.0,1,Casado,TrailConqueror,41446.00,400000.00,bom
+Programador,32,34502.0,Alugada,Ens.Médio,Baixo,62.0,1,Casado,DoubleDuty,159645.00,320000.00,ruim
+Empresário,34,38431.0,Outros,PósouMais,Justo,30.0,1,Casado,DoubleDuty,150459.00,320000.00,ruim
+Empresário,5,36850.0,Outros,Ens.Médio,MuitoBom,37.0,2,Solteiro,DoubleDuty,76530.00,320000.00,bom
+Dentista,18,25311.0,Outros,Ens.Médio,MuitoBom,46.0,2,Casado,ElegantCruise,147925.00,300000.00,ruim
+Empresário,5,36850.0,Outros,Ens.Médio,MuitoBom,37.0,2,Solteiro,DoubleDuty,76530.00,320000.00,bom
+Advogado,29,50879.0,Alugada,PósouMais,MuitoBom,63.0,3,Divorciado,TrailConqueror,400000.00,73604.00,bom
+Cientista de Dados,40,23561.0,Outros,PósouMais,MuitoBom,44.0,0,Víuvo,VoyageRoamer,143697.00,350000.00,ruim
+Arquiteto,26,31394.0,Própria,PósouMais,MuitoBom,53.0,1,Divorciado,ElegantCruise,107035.00,300000.00,ruim
+Contador,13,59188.0,Alugada,Superior,Bom,43.0,2,Casado,TrailConqueror,110610.00,400000.00,bom
+Cientista de Dados,39,57194.0,Própria,Ens.Fundamental,Baixo,49.0,1,Casado,SpeedFury,276568.00,800000.00,ruim
+Médico,36,45851.0,Outros,Ens.Médio,Justo,24.0,0,Solteiro,DoubleDuty,152543.00,320000.00,ruim
+Engenheiro,36,45658.0,Própria,Ens.Médio,Bom,59.0,0,Divorciado,VoyageRoamer,63315.00,350000.00,bom
+Advogado,9,20769.0,Alugada,Superior,Bom,45.0,0,Divorciado,VoyageRoamer,123258.00,350000.00,bom
+Médico,36,33417.0,Alugada,Ens.Fundamental,MuitoBom,53.0,2,Víuvo,WorkMaster,64125.00,280000.00,bom
+Contador,27,22747.0,Própria,Superior,Bom,66.0,1,Víuvo,DoubleDuty,155880.00,320000.00,ruim
+Dent.,36,28529.0,Própria,PósouMais,Baixo,50.0,0,Víuvo,SpeedFury,396853.00,800000.00,ruim
+Programador,24,19999.0,Outros,Ens.Médio,MuitoBom,34.0,1,Solteiro,DoubleDuty,320000.00,33471.00,ruim
+Engenheiro,31,31284.0,Alugada,Ens.Fundamental,MuitoBom,225.0,1,Solteiro,ElegantCruise,42544.00,300000.00,bom
+Programador,18,41962.0,Própria,PósouMais,Baixo,56.0,2,Víuvo,EcoPrestige,167495.00,500000.00,ruim
+Contador,6,20161.0,Alugada,Superior,Bom,66.0,0,Casado,DoubleDuty,63948.00,320000.00,bom
+Programador,32,34502.0,Alugada,Ens.Médio,Baixo,61.0,1,Casado,DoubleDuty,159645.00,320000.00,ruim
+Dentista,10,59504.0,Alugada,Ens.Fundamental,Baixo,61.0,2,Víuvo,TrailConqueror,63623.00,400000.00,bom
+Cientista de Dados,17,21899.0,Outros,PósouMais,Justo,26.0,2,Casado,SpeedFury,299565.00,800000.00,ruim
+Engenheiro,19,37568.0,Alugada,Ens.Fundamental,MuitoBom,71.0,0,Divorciado,AgileXplorer,84435.00,250000.00,ruim
+Advogado,5,20769.0,Alugada,Superior,Bom,45.0,0,Divorciado,VoyageRoamer,123258.00,350000.00,ruim
+Cientista de Dados,32,23556.0,Alugada,Ens.Fundamental,MuitoBom,51.0,0,Víuvo,TrailConqueror,64429.00,400000.00,bom
+Dentista,18,25311.0,Outros,Ens.Médio,MuitoBom,46.0,2,Casado,ElegantCruise,147925.00,300000.00,ruim
+Arquiteto,10,58044.0,Alugada,Ens.Médio,MuitoBom,33.0,0,Casado,AgileXplorer,71500.00,250000.00,bom
+Empresário,40,55773.0,Outros,PósouMais,MuitoBom,61.0,1,Solteiro,AgileXplorer,54034.00,250000.00,bom
+Dentista,26,58158.0,Própria,Ens.Fundamental,MuitoBom,36.0,2,Divorciado,WorkMaster,69172.00,280000.00,bom
+Dentista,26,58158.0,Própria,Ens.Fundamental,MuitoBom,35.0,2,Divorciado,WorkMaster,69172.00,280000.00,bom
+Contador,17,26396.0,Própria,Ens.Fundamental,Justo,37.0,2,Casado,ElegantCruise,80799.00,300000.00,bom
+Contador,27,22747.0,Própria,Superior,Bom,65.0,1,Víuvo,DoubleDuty,155880.00,320000.00,bom
+Programador,34,28792.0,Própria,Ens.Médio,MuitoBom,63.0,2,Víuvo,AgileXplorer,49694.00,250000.00,bom
+Médico,36,47480.0,Própria,Superior,Bom,65.0,0,Divorciado,SpeedFury,217011.00,800000.00,bom
+Empresário,33,33986.0,Outros,PósouMais,Baixo,54.0,1,Casado,TrailConqueror,107893.00,400000.00,bom
+Empresário,33,39118.0,Própria,Ens.Médio,MuitoBom,26.0,2,Divorciado,ElegantCruise,70139.00,300000.00,bom
+Arquiteto,30,44300.0,Outros,Superior,Bom,43.0,1,Solteiro,DoubleDuty,132626.00,320000.00,ruim
+Programador,28,35795.0,Própria,Ens.Médio,Bom,67.0,0,Casado,WorkMaster,130911.00,280000.00,ruim
+Programador,39,26265.0,Outros,Superior,Bom,44.0,0,Casado,DoubleDuty,66652.00,320000.00,bom
+Arquiteto,28,59099.0,Outros,Ens.Fundamental,Justo,52.0,2,Casado,DoubleDuty,119851.00,320000.00,ruim
+Cientista de Dados,999999,39457.0,Outros,PósouMais,MuitoBom,23.0,1,Solteiro,ElegantCruise,84365.00,300000.00,bom
+Empresário,21,41243.0,Própria,PósouMais,Justo,71.0,0,Divorciado,DoubleDuty,63057.00,320000.00,bom
+Engenheiro,6,23890.0,Própria,Ens.Médio,Baixo,68.0,1,Solteiro,AgileXplorer,49280.00,250000.00,bom
+Dentista,7,36023.0,Própria,Ens.Fundamental,MuitoBom,23.0,0,Casado,DoubleDuty,158858.00,320000.00,ruim
+Engenheiro,31,31284.0,Alugada,Ens.Fundamental,MuitoBom,34.0,1,Solteiro,ElegantCruise,42544.00,300000.00,bom
+Cientista de Dados,39,57194.0,Própria,Ens.Fundamental,Baixo,49.0,1,Casado,SpeedFury,276568.00,800000.00,ruim
+Dentista,30,22433.0,,Superior,Justo,44.0,2,Casado,EcoPrestige,249625.00,500000.00,ruim
+Programador,40,21153.0,Outros,Superior,Baixo,56.0,1,Casado,WorkMaster,280000.00,31170.00,bom
+Arquiteto,15,22027.0,Própria,Superior,Baixo,47.0,2,Casado,ElegantCruise,42535.00,300000.00,bom
+Empresário,40,55773.0,Outros,PósouMais,MuitoBom,60.0,1,Solteiro,AgileXplorer,54034.00,250000.00,bom
+Programador,18,17541.0,Alugada,Ens.Médio,MuitoBom,43.0,4,Divorciado,VoyageRoamer,350000.00,50663.00,bom
+,13,42002.0,Alugada,PósouMais,MuitoBom,43.0,1,Casado,WorkMaster,42233.00,280000.00,bom
+Médico,10,46531.0,Própria,Superior,Bom,44.0,0,Solteiro,EcoPrestige,175046.00,500000.00,ruim
+Arquiteto,9,28571.0,Própria,PósouMais,Justo,68.0,2,Divorciado,WorkMaster,106102.00,280000.00,ruim
+Dentista,35,31938.0,Alugada,Superior,Justo,56.0,2,Víuvo,SpeedFury,800000.00,245255.00,bom
+Empresário,8,38942.0,Outros,PósouMais,Justo,55.0,2,Víuvo,EcoPrestige,138777.00,500000.00,bom
+Médico,36,29268.0,Própria,Ens.Fundamental,Justo,49.0,1,Casado,SpeedFury,288911.00,800000.00,ruim
+Dentista,23,44276.0,,PósouMais,Justo,38.0,2,Divorciado,EcoPrestige,83075.00,500000.00,bom
+Engenheiro,32,41777.0,Própria,PósouMais,MuitoBom,37.0,1,Divorciado,VoyageRoamer,47314.00,350000.00,bom
+Dentista,18,17380.0,Outros,Superior,Baixo,36.0,0,Solteiro,AgileXplorer,250000.00,99677.00,bom
+Engenheiro,5,21685.0,Alugada,Ens.Fundamental,MuitoBom,53.0,0,Divorciado,SpeedFury,162661.00,800000.00,bom
+Médico,16,25675.0,Outros,Ens.Fundamental,MuitoBom,61.0,1,Divorciado,TrailConqueror,58414.00,400000.00,bom
+Cientista de Dados,31,57819.0,Alugada,PósouMais,Baixo,43.0,0,Casado,DoubleDuty,67730.00,320000.00,bom
+Contador,17,26396.0,Própria,Ens.Fundamental,Justo,36.0,2,Casado,ElegantCruise,80799.00,300000.00,ruim
+Programador,18,41962.0,Própria,PósouMais,Baixo,56.0,2,Víuvo,EcoPrestige,167495.00,500000.00,ruim
+Programador,11,43599.0,Alugada,Superior,Baixo,40.0,0,Casado,AgileXplorer,56394.00,250000.00,bom
+Arquiteto,19,20189.0,Alugada,Superior,Bom,66.0,0,Divorciado,TrailConqueror,182827.00,400000.00,ruim
+Empresário,17,34541.0,Própria,PósouMais,Baixo,58.0,2,Casado,VoyageRoamer,140616.00,350000.00,ruim
+Engenheiro,32,41777.0,Própria,PósouMais,MuitoBom,37.0,1,Divorciado,VoyageRoamer,47314.00,350000.00,bom
+Arquiteto,29,43897.0,Alugada,Superior,MuitoBom,38.0,1,Casado,EcoPrestige,224417.00,500000.00,ruim
+Programador,26,22568.0,Outros,Ens.Médio,Baixo,38.0,0,Divorciado,AgileXplorer,78520.00,250000.00,ruim
+Médico,36,47480.0,Própria,Superior,Bom,64.0,0,Divorciado,SpeedFury,217011.00,800000.00,bom
+Advogado,39,20860.0,Alugada,Ens.Fundamental,Bom,37.0,0,Víuvo,DoubleDuty,139244.00,320000.00,ruim
+Arquiteto,26,31394.0,Própria,PósouMais,MuitoBom,53.0,1,Divorciado,ElegantCruise,107035.00,300000.00,ruim
+Médico,19,39769.0,,Ens.Médio,Baixo,64.0,0,Solteiro,VoyageRoamer,54520.00,350000.00,bom
+Advogado,6,53763.0,Alugada,Ens.Fundamental,MuitoBom,60.0,1,Divorciado,DoubleDuty,34790.00,320000.00,bom
