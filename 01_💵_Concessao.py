@@ -23,8 +23,8 @@ produtos = ['AgileXplorer', 'DoubleDuty', 'EcoPrestige', 'ElegantCruise', 'Speed
 
 with st.sidebar:
         acuracia = load("objects/acuracia.npy") #Exibição da acurácia na barra lateral
-        st.markdown(f"<span style='font-size: 20px; font-weight: bold'>Acurácia do Modelo: ---</span>\
-                    <span style='font-size: 25px; font-weight: bold; color: #008000'>{acuracia*100:.2f}%", unsafe_allow_html=True) 
+        st.markdown(f"<span style='font-size: 18px; font-weight: bold'>Acurácia do Modelo: - </span>\
+                    <span style='font-size: 23px; font-weight: bold; color: #008000'>{acuracia*100:.2f}%", unsafe_allow_html=True) 
         st.text("")        
         st.markdown( # Rodapé na barra lateral com as informações do desenvolvedor
         """

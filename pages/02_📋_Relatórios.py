@@ -91,8 +91,8 @@ if visualizar:
             st.success(f"Retorno do uso de Redes Neurais em relação ao Modelo XGB:\
                         R$ {diferenca_xgb:,.2f} ")
             st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)
-            st.markdown("<div style='font-size: 28px; font-weight: bold; color: #008000'>Descrição da visualização ", unsafe_allow_html=True)
-            st.markdown("<div style='font-size: 18px; font-weight: sans serif'>O gráfico ao labo traz uma análise detalhada\
+            st.markdown("<div style='font-size: 26px; font-weight: bold; color: #008000'>Descrição da visualização ", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 16px; font-weight: sans serif'>O gráfico ao labo traz uma análise detalhada\
                         dos ganhos com bons pagadores, subtraindo-se as perdas com inadimplência e possível perda de clientes.\
                         Através dele é possível ter uma estimativa real dos possíveis\
                         retornos financeiros possíveis com o uso de Redes Neurais comparado a um modelo menos preciso e \
@@ -132,7 +132,7 @@ if visualizar:
     elif visualizacao == "Captação de Bons Clientes": # Gráfico e relatório de captação de bons clientes
         st.header("Captação de Bons Clientes")
         st.markdown("<hr style='border: 2px solid #2020df'>", unsafe_allow_html=True)
-        col1, col2 = st.columns([0.6, 0.4])
+        col1, col2 = st.columns([0.6, 0.4], gap="large")
         with col1:
             figura2 = plot_captacao_bons_clientes(resultado_xgb["captacao_bons_clientes"], resultado_seq["captacao_bons_clientes"])        
             st.pyplot(figura2, use_container_width=True)

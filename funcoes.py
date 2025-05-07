@@ -61,7 +61,7 @@ def save_scalers(df, nome_colunas):
     for nome_coluna in nome_colunas:
         scaler = StandardScaler()
         df[nome_coluna] = scaler.fit_transform(df[[nome_coluna]])
-        joblib.dump(scaler, f'.\objects\scalers{nome_coluna}.joblib')
+        joblib.dump(scaler, f'./objects/scalers{nome_coluna}.joblib')
 
     return df
 
@@ -72,7 +72,7 @@ def save_encoders(df, nome_colunas):
     for nome_coluna in nome_colunas:
         labelencoder = LabelEncoder()
         df[nome_coluna] = labelencoder.fit_transform(df[nome_coluna])
-        joblib.dump(labelencoder, f'.\objects\encoders{nome_coluna}.joblib')
+        joblib.dump(labelencoder, f'./objects/encoders{nome_coluna}.joblib')
 
     return df
 
@@ -81,7 +81,7 @@ def save_encoders(df, nome_colunas):
 @monitor_funcoes
 def load_scalers(df, nome_colunas):
     for nome_coluna in nome_colunas:
-        arquivo_scaler = f'.\objects\scalers{nome_coluna}.joblib'
+        arquivo_scaler = f'./objects/scalers{nome_coluna}.joblib'
         scaler = joblib.load(arquivo_scaler)
         df[nome_coluna] = scaler.transform(df[[nome_coluna]])
 
@@ -92,7 +92,7 @@ def load_scalers(df, nome_colunas):
 @monitor_funcoes
 def load_encoders(df, nome_colunas):
     for nome_coluna in nome_colunas:
-        arquivo_encoder = f'.\objects\encoders{nome_coluna}.joblib'
+        arquivo_encoder = f'./objects/encoders{nome_coluna}.joblib'
         encoder = joblib.load(arquivo_encoder)
         df[nome_coluna] = encoder.transform(df[nome_coluna])
 
