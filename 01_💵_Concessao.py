@@ -23,7 +23,7 @@ produtos = ['AgileXplorer', 'DoubleDuty', 'EcoPrestige', 'ElegantCruise', 'Speed
 
 with st.sidebar:
         acuracia = load("objects/acuracia.npy") #Exibição da acurácia na barra lateral
-        st.markdown(f"<span style='font-size: 18px; font-weight: bold'>Acurácia do Modelo: - </span>\
+        st.markdown(f"<span style='font-size: 18px; font-weight: bold'>Acurácia do Modelo: -- </span>\
                     <span style='font-size: 23px; font-weight: bold; color: #008000'>{acuracia*100:.2f}%", unsafe_allow_html=True) 
         st.text("")        
         st.markdown( # Rodapé na barra lateral com as informações do desenvolvedor
@@ -88,6 +88,7 @@ with st.form(key = 'prediction_form'):
 
 
 if submit_button:
+    progresso = st.progress(50, "Aguarde um momento.. Processando os dados inseridos")
         
     dados_novos = {
     'profissao': [profissao],
@@ -122,6 +123,8 @@ if submit_button:
         st.error(f"Resultado: {classe}")
         probabilidade = 100 - probabilidade
         st.error(f"Probabilidade: {probabilidade:.2f}%")
+
+    progresso.progress(100, "Dados processados com sucesso...")
 
 
 
