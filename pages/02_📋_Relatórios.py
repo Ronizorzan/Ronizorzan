@@ -75,27 +75,27 @@ if visualizar:
     if visualizacao == "Impacto Financeiro": # Gráfico e relatório de impacto financeiro
         st.header("Impacto Financeiro")
         st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)
-        col1, col2 = st.columns([0.6,0.4], gap="large")
+        col1, col2 = st.columns([0.6,0.4], gap="medium")
         with col1:
             resultados, figura_impacto = calcular_e_plotar_impacto(matrix_xgb, matrix_seq, valor_medio_emprest, taxa_juros)
             st.pyplot(figura_impacto, use_container_width=True)            
 
         with col2:
             st.markdown("<div style='font-size: 28px; font-weight: bold; color: #008000'>Relatório de Impacto Detalhado", unsafe_allow_html=True)
-            st.write(resultados)
-            diferenca_baseline = (resultados["Sequential"][2]) - (resultados["Baseline"][2])
-            diferenca_xgb = (resultados["Sequential"][2]) - (resultados["XGB"][2])
+            st.write(resultados.round(2))
+            diferenca_baseline = (resultados.iloc[2,2]) - (resultados.iloc[2, 0])
+            diferenca_xgb = (resultados.iloc[2,2]) - (resultados.iloc[2,1])
             st.text(" ")
             st.success(f"Retorno do uso de Redes Neurais em relação ao atual cenário:\
                         R$ {diferenca_baseline:,.2f} ")
             st.success(f"Retorno do uso de Redes Neurais em relação ao Modelo XGB:\
                         R$ {diferenca_xgb:,.2f} ")
             st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)
-            st.markdown("<div style='font-size: 26px; font-weight: bold; color: #008000'>Descrição da visualização ", unsafe_allow_html=True)
+            st.markdown("<div style='font-size: 28px; font-weight: bold; color: #008000'>Descrição da visualização ", unsafe_allow_html=True)
             st.markdown("<div style='font-size: 16px; font-weight: sans serif'>O gráfico ao labo traz uma análise detalhada\
                         dos ganhos com bons pagadores, subtraindo-se as perdas com inadimplência e possível perda de clientes.\
                         Através dele é possível ter uma estimativa real dos possíveis\
-                        retornos financeiros possíveis com o uso de Redes Neurais comparado a um modelo menos preciso e \
+                        retornos financeiros alcançáveis com o uso de Redes Neurais comparado a um modelo menos preciso e \
                         também ao cenário atual da empresa que não utiliza Inteligência Artificial na aprovação dos seus clientes (baseline).", unsafe_allow_html=True)                                            
      
     if visualizacao == "Redução da Inadimplência": # Gráfico e relatório de Inadimplência
@@ -160,14 +160,14 @@ if visualizar:
             st.pyplot(figura3, use_container_width=True)
         with col2:            
             st.markdown("<div style='font-size: 30px; font-weight: bold; color: #2020df'>Descrição da visualização", unsafe_allow_html=True)                      
-            st.markdown("<div style=' font-size: 20px; font-weight:bold'>O gráfico ao lado mostra a taxa de aprovação \
-                        de clientes. Note que Redes Neurais aprova menos clientes que XGBoost, mas \
+            st.markdown("<div style=' font-size: 22px; font-weight:bold'>O gráfico ao lado mostra a taxa de aprovação \
+                        de clientes. Note que Redes Neurais aprovou menos clientes que XGBoost, mas \
                         ainda assim conseguiu captar uma maior quantidade de bons clientes e consequentemente reprovou\
                         clientes com alto risco de se tornar inadimplentes, o que traz grandes benefícios, não\
-                        só na maior captação de recursos mas também na prevenção de perdas</div>", unsafe_allow_html=True )
+                        só na maior captação de recursos mas também na prevenção de perdas financeiras.</div>", unsafe_allow_html=True )
             st.markdown("<hr style='border: 2px solid #2020df'>", unsafe_allow_html=True)
             st.markdown("<div style='font-size: 30px; font-weight: bold; color: #2020df'>Taxa de Aprovação dos Modelos", unsafe_allow_html=True)
-            st.markdown(f"<div style=' font-size: 20px; font-weight:bold'>Redes Neurais aprovou {resultado_seq['taxa_aprovacao']}%\
+            st.markdown(f"<div style=' font-size: 22px; font-weight:bold'>Redes Neurais aprovou {resultado_seq['taxa_aprovacao']}%\
                         dos clientes que solicitaram empréstimo enquanto XGB aprovou {resultado_xgb['taxa_aprovacao']}0% ", unsafe_allow_html=True)
                      
                        

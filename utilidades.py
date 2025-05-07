@@ -199,7 +199,7 @@ def calcular_e_plotar_impacto(matriz_xgb, matriz_seq, valor_medio_emprest, taxa_
     x = np.arange(len(estrategias))
     width = 0.7
     
-    fig, ax = plt.subplots(figsize=(10, 6))
+    fig, ax = plt.subplots(figsize=(9, 6))
     
     # Plota a parte dos ganhos (segmento verde) – a partir do zero
     ax.bar(x, ganhos_list, width, label='Valores Ganhos', color='green')#, edgecolor="black", linewidth=1.5)
