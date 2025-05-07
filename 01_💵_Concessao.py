@@ -1,7 +1,5 @@
 #Importação das bibliotecas
-from numpy import reshape
 import streamlit as st
-import yaml
 import pandas as pd
 from funcoes import *
 from tensorflow.keras.models import load_model
@@ -107,7 +105,7 @@ if submit_button:
     }
 
     modelo = load_model('meu_modelo.keras')
-    seletor = joblib.load("objects\seletor.joblib")
+    seletor = joblib.load("objects/seletor.joblib")
     
     df = pd.DataFrame(dados_novos)
     df = load_scalers(df,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem'] )
