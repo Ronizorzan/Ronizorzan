@@ -7,10 +7,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.feature_selection import RFE
 from utilidades import *
 from funcoes import *
-from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
 import numpy as np
 from keras.layers import Dense, Dropout
-from sklearn.metrics import classification_report, accuracy_score, confusion_matrix
+from keras.callbacks import EarlyStopping
+from keras import metrics
 
 
 #Consulta no banco de dados
@@ -20,12 +21,12 @@ df = fetch_data_from_db(const.consulta_sql)
 df['idade'] = df['idade'].astype(int)
 df['valortotalbem'] = df['valortotalbem'].astype(float)
 df['valorsolicitado'] = df['valorsolicitado'].astype(float)
-df['proporcaosolicitadototal'] = df['valorsolicitado'] / df['valortotalbem']
+#df['proporcaosolicitadototal'] = df['valorsolicitado'] / df['valortotalbem']
 
 
 lista = ['Advogado', 'Arquiteto', 'Cientista de Dados', 'Contador','Dentista','Empresário', 'Engenheiro','Médico','Programador'] #Profissões Válidas
 colunas_categoricas = ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto']  
-colunas_numericas = ['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem','proporcaosolicitadototal']
+colunas_numericas = ['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem']
 
 
 #Chamada das Funções para Tratamento dos dados
@@ -36,28 +37,28 @@ corrigir_erros_digitacao(df, 'profissao', lista)
 
 
 #Separação da classe
-x = df.drop('classe', axis = 1)
+X = df.drop('classe', axis = 1)
 y = df['classe']
 
 
 
 #Divisão em treino e teste
-x_treino, x_teste, y_treino, y_teste = train_test_split(x, y, test_size = 0.3, random_state = 1235)
+X_treino, X_teste, y_treino, y_teste = train_test_split(X, y, test_size = 0.3, random_state = 1235)
 
 
 #Carregamento dos padronizadores
-x_treino = save_scalers(x_treino,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem','proporcaosolicitadototal'] )
-x_teste = save_scalers(x_teste,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem','proporcaosolicitadototal'] )
+x_treino = save_scalers(X_treino,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem'] )
+x_teste = save_scalers(X_teste,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem'] )
 
 #Carregamento dos Codificadores
-x_treino = save_encoders(x_treino, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
-x_teste = save_encoders(x_teste, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
+X_treino = save_encoders(X_treino, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
+X_teste = save_encoders(X_teste, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
 
 #Carregamento do Seletor de Atributos
-seletor = RFE(RandomForestClassifier(n_estimators=500), n_features_to_select=5, step=1)
-x_treino = seletor.fit(x_treino, y_treino).transform(x_treino)
-x_teste = seletor.transform(x_teste)
-joblib.dump(seletor, "objects/seletor.joblib")
+seletor = RFE(RandomForestClassifier(n_estimators=500), n_features_to_select=6, step=1)
+X_treino = seletor.fit(X_treino, y_treino).transform(X_treino)
+X_teste = seletor.transform(X_teste)
+joblib.dump(seletor, "objects\seletor.joblib")
 
 
 #Codificação Manual (Ruim receberá 0 e Bom receberá 1)
@@ -67,30 +68,34 @@ y_teste = np.array([mapeamento[item] for item in y_teste])
 
 
 #Empilhamento das camadas das redes neurais
-modelo = Sequential()
-modelo.add(Dense(10, activation = 'relu', input_dim = x_treino.shape[1]))
-modelo.add(Dropout(0.2))
-modelo.add(Dense(10, activation = 'relu'))
-modelo.add(Dropout(0.2))
-modelo.add(Dense(10, activation = 'relu'))
-modelo.add(Dropout(0.2))
-modelo.add(Dense(1, activation = 'sigmoid'))
+model_seq = Sequential()
+model_seq.add(Dense(50, activation = 'relu', input_dim = X_treino.shape[1]))
+model_seq.add(Dropout(0.2))
+model_seq.add(Dense(50, activation = 'relu'))
+model_seq.add(Dropout(0.2))
+model_seq.add(Dense(50, activation = 'relu'))
+model_seq.add(Dropout(0.2))
+model_seq.add(Dense(1, activation = 'sigmoid'))
+
+model_seq.summary()
 
 #Compilação e treinamento
-modelo.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-modelo.fit(x_treino, y_treino, epochs = 500, batch_size = 24, validation_data=(x_teste, y_teste))
+model_seq.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [metrics.AUC()])
+early_stopping = EarlyStopping(monitor="val_loss", patience=50, restore_best_weights=True, mode="min")
+model_seq.fit(X_treino, y_treino, epochs = 500, batch_size = 20, validation_data=(X_teste, y_teste), callbacks=[early_stopping])
 
-modelo.save('meu_modelo.keras')
+model_seq.save("meu_modelo.keras")
 
-
-previsoes = modelo.predict(x_teste)
+previsoes = model_seq.predict(X_teste)
 
 previsoes = (previsoes > 0.5).astype(int)
 
 
 #Algumas métricas adicionais para conferir a acurácia do modelo nos dados de teste
-accuracy = accuracy_score(y_teste, previsoes)
-print(f'Acurácia do modelo nos dados de teste: {accuracy}')
+acuracia = accuracy_score(y_teste, previsoes)
+print(f'Acurácia do modelo nos dados de teste: {acuracia:.2f}')
+np.save("objects/acuracia.npy", acuracia)
+
 
 report = classification_report(y_teste, previsoes)
 print(f'Outras métricas do modelo com os dados de teste: \n  {report}')

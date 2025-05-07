@@ -4,7 +4,6 @@ import pandas as pd
 from funcoes import *
 from tensorflow.keras.models import load_model
 import joblib
-import const
 from utilidades import *
 
 
@@ -29,7 +28,7 @@ try:
     
     
     if __name__ == '__main__':
-        app.run('0.0.0.0', port = 5000, debug = True)
+        app.run('0.0.0.0', port = 5000, debug = False)
     
     
     
