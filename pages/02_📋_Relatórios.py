@@ -75,24 +75,26 @@ if visualizar:
     if visualizacao == "Impacto Financeiro": # Gráfico e relatório de impacto financeiro
         st.header("Impacto Financeiro")
         st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)
-        col1, col2 = st.columns([0.6,0.4], gap="medium")
+        col1, col2 = st.columns([0.55,0.45], gap="medium")
         with col1:
             resultados, figura_impacto = calcular_e_plotar_impacto(matrix_xgb, matrix_seq, valor_medio_emprest, taxa_juros)
-            st.pyplot(figura_impacto, use_container_width=True)            
+            st.pyplot(figura_impacto, use_container_width=True)               
+           
 
         with col2:
             st.markdown("<div style='font-size: 28px; font-weight: bold; color: #008000'>Relatório de Impacto Detalhado", unsafe_allow_html=True)
             st.write(resultados.round(2))
             diferenca_baseline = (resultados.iloc[2,2]) - (resultados.iloc[2, 0])
-            diferenca_xgb = (resultados.iloc[2,2]) - (resultados.iloc[2,1])
-            st.text(" ")
+            diferenca_xgb = (resultados.iloc[2,2]) - (resultados.iloc[2,1])            
+            st.markdown(f"<div style='font-size: 23px; font-weight: bold; color: #008000'>Retorno\
+                        líquido estimado utilizando o modelo: R$ {resultados.iloc[2,2]:,.2f} ", unsafe_allow_html=True)
             st.success(f"Retorno do uso de Redes Neurais em relação ao atual cenário:\
                         R$ {diferenca_baseline:,.2f} ")
             st.success(f"Retorno do uso de Redes Neurais em relação ao Modelo XGB:\
                         R$ {diferenca_xgb:,.2f} ")
-            st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)
+            st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)            
             st.markdown("<div style='font-size: 28px; font-weight: bold; color: #008000'>Descrição da visualização ", unsafe_allow_html=True)
-            st.markdown("<div style='font-size: 16px; font-weight: sans serif'>O gráfico ao labo traz uma análise detalhada\
+            st.markdown("<div style='font-size: 18px; font-weight: sans serif'>O gráfico ao labo traz uma análise detalhada\
                         dos ganhos com bons pagadores, subtraindo-se as perdas com inadimplência e possível perda de clientes.\
                         Através dele é possível ter uma estimativa real dos possíveis\
                         retornos financeiros alcançáveis com o uso de Redes Neurais comparado a um modelo menos preciso e \
@@ -145,8 +147,8 @@ if visualizar:
             st.markdown("<hr style='border: 2px solid #2020df'>", unsafe_allow_html=True)
             st.markdown("<div style='font-size: 30px; font-weight: bold; color: #2020df'>Possível abordagem alternativa", unsafe_allow_html=True)
             st.markdown("<div style=' font-size: 20px; font-weight:bold'>🤖 XGBoost ainda é competitivo! Embora tenha ficado atrás," \
-            " 88% de bons clientes captados ainda é um excelente desempenho, mostrando que árvores de decisão otimizadas\
-                  continuam sendo uma alternativa sólida.", unsafe_allow_html=True)
+            " a quantidade de bons clientes captados ainda indica um excelente desempenho, mostrando que árvores de decisão otimizadas\
+                  continuam sendo uma alternativa sólida em alguns casos.", unsafe_allow_html=True)
             st.markdown("<hr style='border: 2px solid #2020df'>", unsafe_allow_html=True)
 
     
