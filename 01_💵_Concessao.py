@@ -70,7 +70,7 @@ with st.sidebar:
 
 #Formação das caixas de seleção e submit_button
 with st.form(key = 'prediction_form'):
-    with st.expander("Insira as características do cliente"):
+    with st.expander("Insira as características do novo cliente"):
         profissao = st.selectbox('profissão', profissoes)
         tempoprofissao = st.number_input('Tempo na profissão (em anos)', min_value=0, value=25, step=1, max_value=70)
         renda = st.number_input("Renda", min_value=0.0, value=50000.0, step = 1000.0)
@@ -105,7 +105,8 @@ if submit_button:
     'valortotalbem': [valortotalbem]
     }
 
-    modelo = load_model('meu_modelo.keras')
+    caminho_modelo = 'meu_modelo.h5'
+    modelo = load_model(caminho_modelo)
     seletor = joblib.load("objects/seletor.joblib")
     
     df = pd.DataFrame(dados_novos)

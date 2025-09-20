@@ -84,7 +84,7 @@ model_seq.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = [m
 early_stopping = EarlyStopping(monitor="val_loss", patience=50, restore_best_weights=True, mode="min")
 model_seq.fit(X_treino, y_treino, epochs = 500, batch_size = 20, validation_data=(X_teste, y_teste), callbacks=[early_stopping])
 
-model_seq.save("meu_modelo.keras")
+model_seq.save("meu_modelo.h5")
 
 previsoes = model_seq.predict(X_teste)
 
