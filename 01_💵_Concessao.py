@@ -22,55 +22,87 @@ estados_civis = ['Casado', 'Divorciado', 'Solteiro', 'Víuvo']
 produtos = ['AgileXplorer', 'DoubleDuty', 'EcoPrestige', 'ElegantCruise', 'SpeedFury', 'TrailConqueror', 'VoyageRoamer', 'WorkMaster']
 
 with st.sidebar:
-        acuracia = load("objects/acuracia.npy") #Exibição da acurácia na barra lateral
-        st.markdown(f"<span style='font-size: 18px; font-weight: bold'>Acurácia do Modelo: -- </span>\
-                    <span style='font-size: 23px; font-weight: bold; color: #008000'>{acuracia*100:.2f}%", unsafe_allow_html=True) 
-        st.text("")        
-        st.markdown( # Rodapé na barra lateral com as informações do desenvolvedor
-        """
-        <style>
-        .footer {
-        background-color: #f8f9fa;
-        padding: 15px 20px;
-        border-radius: 8px;
-        text-align: center;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin-top: 40px;
-        color: #343a40;
-        }
-        .footer a {
-        margin: 0 15px;
-        display: inline-block;
-        }
-        .footer img {
-        height: 40px;
-        width: auto;
-        transition: transform 0.3s ease;
-        }
-        .footer img:hover {
-        transform: scale(1.1);
-        }
-        </style>
-        <div class="footer">
-        <p><strong>Desenvolvido por: Ronivan</strong></p>
-        <a href="https://github.com/Ronizorzan" target="_blank">
-            <img src="https://img.icons8.com/ios-filled/50/000000/github.png" alt="GitHub">
-        </a>
-        <a href="https://www.linkedin.com/in/ronivan-zorzan-barbosa" target="_blank">
-            <img src="https://img.icons8.com/color/48/000000/linkedin.png" alt="LinkedIn">
-        </a>
-        <a href="https://share.streamlit.io/user/ronizorzan" target="_blank">
-            <img src="https://images.seeklogo.com/logo-png/44/1/streamlit-logo-png_seeklogo-441815.png" alt="Streamlit Community">
-        </a>
+        acuracia = load("objects/acuracia.npy") 
+                        
+        # Título com ícone
+        st.markdown("""
+        <div style='display: flex; align-items: center; gap: 10px;'>
+            <span style='font-size: 24px; font-weight: bold; color: #eeeeee;'>📊 Acurácia do Modelo</span>
         </div>
-        """,
-        unsafe_allow_html=True)
+        """, unsafe_allow_html=True)
+
+        # Valor da acurácia com destaque visual na barra lateral     
+        st.markdown(f"""
+        <div style='margin-top: 10px; padding: 15px; background-color: #f9f9f9; border-left: 7px solid #972328; border-radius: 8px;'>
+            <span style='font-size: 36px; font-weight: bold; color: #972328;'>{acuracia*100:.2f}%</span>
+            <br>
+            <span style='font-size: 16px; color: #555;'>Desempenho baseado nos dados de validação</span>
+        </div>
+        """, unsafe_allow_html=True)
+        st.markdown("---")
+           
+        st.markdown("""
+        <div style='display: flex; align-items: center; gap: 10px;'>
+            <span style='font-size: 24px; font-weight: bold; color: #eeeeee;'>🔗Links do desenvolvedor:</span>
+        </div>
+        """, unsafe_allow_html=True)
+        
+        # Rodapé na barra lateral com as informações do desenvolvedor
+        st.markdown("""
+<style>
+.footer {
+    background-color: #f8f9fa;
+    padding: 20px 25px;
+    border-radius: 10px;
+    border-left: 9px solid #972328;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    color: #343a40;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.footer p {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+.footer a {
+    margin: 0 12px;
+    display: inline-block;
+}
+.footer img {
+    height: 36px;
+    width: 36px;
+    border-radius: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.footer img:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 8px rgba(151, 35, 40, 0.4);
+}
+</style>
+
+<div class="footer">
+    <p><strong>Desenvolvido por Ronivan Zorzan Barbosa</strong></p>
+    <a href="https://github.com/Ronizorzan/Ronizorzan/blob/master/" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+    </a>
+    <a href="https://www.linkedin.com/in/ronivan-zorzan-barbosa" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+    </a>
+    <a href="mailto:ronizorzan1992@gmail.com" target="_blank">
+        <img src="https://cdn-icons-png.flaticon.com/512/732/732200.png" alt="Email">
+    </a>
+    <a href="https://share.streamlit.io/user/ronizorzan" target="_blank">
+        <img src="https://images.seeklogo.com/logo-png/44/1/streamlit-logo-png_seeklogo-441815.png" alt="Streamlit">
+    </a>
+</div>
+""", unsafe_allow_html=True)
         
         
 
 #Formação das caixas de seleção e submit_button
 with st.form(key = 'prediction_form'):
-    with st.expander("Insira as características do novo cliente"):
+    with st.expander("Insira as características do novo cliente", expanded=True):
         profissao = st.selectbox('profissão', profissoes)
         tempoprofissao = st.number_input('Tempo na profissão (em anos)', min_value=0, value=25, step=1, max_value=70)
         renda = st.number_input("Renda", min_value=0.0, value=50000.0, step = 1000.0)
@@ -106,8 +138,8 @@ if submit_button:
     }
 
     caminho_modelo = 'meu_modelo.h5'
-    modelo = load_model(caminho_modelo)
-    seletor = joblib.load("objects/seletor.joblib")
+    modelo = load_model(caminho_modelo) # Carregamento do modelo treinado
+    seletor = joblib.load("objects/seletor.joblib") # Carregamento do seletor de atributos
     
     df = pd.DataFrame(dados_novos)
     df = load_scalers(df,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem'] )
@@ -119,11 +151,11 @@ if submit_button:
     classe = "Bom" if probabilidade > 50 else "Ruim"
     if classe=="Bom":
         st.success(f"Resultado: {classe}")
-        st.success(f'Probabilidade:{probabilidade:.2f}%')
+        st.success(f'Probabilidade de inadimplência:{probabilidade:.2f}%')
     else:
         st.error(f"Resultado: {classe}")
         probabilidade = 100 - probabilidade
-        st.error(f"Probabilidade: {probabilidade:.2f}%")
+        st.error(f"Probabilidade de inadimplência: {probabilidade:.2f}%")
 
     progresso.progress(100, "Dados processados com sucesso...")
 

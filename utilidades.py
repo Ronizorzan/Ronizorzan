@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt
 import matplotlib.ticker as mtick
 import seaborn as sns
 import numpy as np
+from typing import Optional, List, Union
 
 
 #Recupera os dados diretamente do banco de dados
@@ -199,7 +200,7 @@ def calcular_e_plotar_impacto(matriz_xgb, matriz_seq, valor_medio_emprest, taxa_
     x = np.arange(len(estrategias))
     width = 0.7
     
-    fig, ax = plt.subplots(figsize=(9, 6))
+    fig, ax = plt.subplots(figsize=(8, 6))
     
     # Plota a parte dos ganhos (segmento verde) – a partir do zero
     ax.bar(x, ganhos_list, width, label='Valores Ganhos', color='green')#, edgecolor="black", linewidth=1.5)
@@ -211,31 +212,20 @@ def calcular_e_plotar_impacto(matriz_xgb, matriz_seq, valor_medio_emprest, taxa_
     ax.set_xticklabels(estrategias)
     ax.set_xlabel('Estratégia', fontsize=15)
     ax.set_ylabel('Valor (R$)', fontsize=15)
-    ax.set_title('Impacto Financeiro: Perdas e Ganhos por Estratégia', fontsize=15)
+    ax.set_title('Impacto Financeiro: Lucros maximizados, riscos mitigados', fontsize=15)
     ax.axhline(0, color='black', linewidth=0.9)
     ax.legend(bbox_to_anchor=(0.08,-0.02))
     plt.tight_layout()
 
      # Consolidação dos resultados em um dicionário
-    resultados = {
-        "Baseline": {
-            "ganhos": ganhos_baseline,
-            "perdas": perdas_baseline,
-            "retorno_liquido": impacto_baseline
-        },
-         "XGB": {            
-            "ganhos": ganhos_xgb,
-            "perdas": perdas_xgb,
-            "retorno_liquido": impacto_xgb
-         },
-        "Sequential": {            
-        "ganhos": ganhos_seq,
-        "perdas": perdas_seq,
-        "retorno_liquido": impacto_seq          
-        }}
+    resultados = { 'Modelos': ['Baseline', 'XGB', 'Redes Neurais'],
+        "Ganhos": [ganhos_baseline, ganhos_xgb, ganhos_seq],
+        "Perdas": [perdas_baseline, perdas_xgb, perdas_seq],
+        "Retorno Líquido": [impacto_baseline, impacto_xgb, impacto_seq]}
+    
     df = pd.DataFrame(resultados)
 
-    return df, plt.gcf()
+    return df.round(2), plt.gcf()
    
 
 
@@ -307,3 +297,174 @@ def plot_captacao_bons_clientes(captacao_xgb, captacao_seq):
     ax.set_ylabel("Percentual de Bons Clientes Aprovados (%)", fontsize=15)
     ax.set_ylim(0, max(captacao) + 10)  # Ajustando o eixo Y
     return plt.gcf()
+
+
+def plot_roi(resultados):
+    """
+    Calcula e plota gráfico para visualização de ROI.
+    Espera um DataFrame com colunas: 'Modelos', 'Retorno Líquido', 'Perdas'.
+    """
+    # Calcula ROI para cada linha do DataFrame
+    resultados["ROI"] = (resultados["Retorno Líquido"] - resultados["Perdas"]) / resultados["Perdas"]
+    
+    fig, ax = plt.subplots()
+    
+    # Plota gráfico de barras        
+    fig = sns.barplot(
+        x="Modelos",
+        y="ROI",
+        data=resultados,
+        palette=["#e81224", "#f7630c", "#16c60c"],
+        edgecolor="black",
+        linewidth=1.0
+    )
+
+    # Adiciona anotações de ROI em cada barra
+    for i, roi in enumerate(resultados["ROI"]):
+        ax.annotate(f"{roi:.2f}R$", xy=(i, roi), xytext=(0, 8),
+                    textcoords="offset points", ha="center", fontsize=11, color="black")
+        #ax.text(i, roi - 0.5, f"ROI: {roi:.2f}R$", ha="center", fontsize=10, color="black")
+
+
+    sns.despine(bottom=True, right=True, top=True)
+    plt.title("ROI (por real gasto)")
+    plt.axhline(0, color="black", linestyle="--", linewidth=0.9)
+    plt.ylabel("Retorno sobre Investimento")
+    plt.xlabel("Modelos")
+    plt.ylim(bottom=-1)  # força o eixo Y a começar do -1
+    plt.tight_layout()
+
+    return plt.gcf()
+
+
+
+def _bin_numeric(
+    s: pd.Series,
+    bins: Union[int, List[float], None] = None,
+    strategy: str = "quantile",
+    precision: int = 2
+):
+    if bins is None:
+        return s  # no binning
+    if isinstance(bins, int):
+        if strategy == "quantile":
+            return pd.qcut(s, q=bins, duplicates="drop", precision=precision)
+        elif strategy == "uniform":
+            return pd.cut(s, bins=bins, precision=precision)
+        else:
+            raise ValueError("strategy must be 'quantile' or 'uniform'")
+    else:
+        # custom edges
+        return pd.cut(s, bins=bins, precision=precision, include_lowest=True)
+    
+def _wilson_ci(k, n, z=1.96):
+    # k: sucessos (inadimplentes), n: total; z=1.96 ~ 95% CI
+    if n == 0:
+        return (np.nan, np.nan)
+    phat = k / n
+    denom = 1 + z**2 / n
+    center = (phat + z**2/(2*n)) / denom
+    margin = (z * np.sqrt((phat*(1 - phat) + z**2/(4*n))/n)) / denom
+    return (max(0, center - margin), min(1, center + margin))
+    
+
+def plot_rate_by_group(
+    df: pd.DataFrame,
+    target: str,                # ex: "inadimplente" (0/1)
+    group: str,                 # ex: "profissao" ou "renda"
+    *,
+    positive_label: Optional[Union[int, str]] = 1,
+    bins: Union[int, List[float], None] = None,
+    bin_strategy: str = "uniform",
+    min_count: int = 20,
+    sort_by: str = "rate",      # "rate" ou "count"
+    ascending: bool = False,
+    top_n: Optional[int] = None,
+    show_ci: bool = True,
+    annotate: bool = True,
+    palette: str = "Reds_r",
+    figsize=(10, 6),
+    title: Optional[str] = None,
+    ax: Optional[plt.Axes] = None
+):
+    """
+    Plota taxa de inadimplência por grupo (ou por bins, se numérico).
+    """
+    data = df[[group, target]].copy()
+    data = data.dropna(subset=[group, target])
+
+    # binning se a coluna de grupo for numérica
+    if np.issubdtype(data[group].dtype, np.number) and bins is not None:
+        data["_group"] = _bin_numeric(data[group], bins=bins, strategy=bin_strategy)
+    else:
+        data["_group"] = data[group].astype("category") if data[group].dtype == "O" else data[group]
+
+    # normaliza target para 0/1 se necessário
+    y = data[target]
+    if positive_label is not None:
+        y = (y == positive_label).astype(int)
+    elif set(y.unique()) - {0, 1}:
+        raise ValueError("target must be binary or specify positive_label.")
+
+    # agregação
+    grp = data.groupby("_group", observed=False)
+    agg = grp[target].agg(["count", "sum"]).rename(columns={"count": "n", "sum": "k"})
+    agg["rate"] = agg["k"] / agg["n"]
+
+    # filtra por suporte mínimo
+    agg = agg[agg["n"] >= min_count]
+
+    # intervalo de confiança (Wilson)
+    if show_ci:
+        cis = agg.apply(lambda r: _wilson_ci(r["k"], r["n"]), axis=1, result_type="expand")
+        agg["ci_low"], agg["ci_high"] = cis[0], cis[1]
+        agg["err_low"] = agg["rate"] - agg["ci_low"]
+        agg["err_high"] = agg["ci_high"] - agg["rate"]
+
+    # ordenação e top_n
+    key = "rate" if sort_by == "rate" else "n"
+    agg = agg.sort_values(key, ascending=ascending)
+    if top_n is not None:
+        agg = agg.head(top_n)
+
+    # plot
+    if ax is None:
+        fig, ax = plt.subplots(figsize=figsize)
+
+    # converte índice para strings amigáveis
+    x_labels = [str(x) for x in agg.index.tolist()]
+    x = np.arange(len(agg))
+    rates = agg["rate"].values
+
+    sns.barplot(x=x, y=rates, palette=palette, ax=ax, hue=x_labels)
+
+    # erro (CI)
+    if show_ci:
+        ax.errorbar(
+            x=x, y=rates,
+            yerr=[agg["err_low"].values, agg["err_high"].values],
+            fmt="none", ecolor="black", elinewidth=1, capsize=3, capthick=1, alpha=0.8
+        )
+
+    # anotações
+    if annotate:
+        for i, (rate, n) in enumerate(zip(agg["rate"].values, agg["n"].values)):
+            ax.text(
+                i, rate + 0.01,
+                f"{rate*100:.1f}%\n(Clientes={n})",
+                ha="center", va="bottom", fontsize=9
+            )
+
+    # estética
+    ax.legend_.remove() if ax.legend_ else None
+    ax.set_xticks(x)
+    ax.set_xticklabels(x_labels, rotation=0, ha="center")
+    ax.set_ylim(0, min(1.0, max(rates) + 0.15))
+    ax.set_ylabel("Taxa de inadimplência")
+    ax.set_xlabel(group)
+    if title is None:
+        title = f"Taxa de inadimplência por {group}" + (" (com IC 95%)" if show_ci else "")
+    ax.set_title(title)
+    ax.yaxis.set_major_formatter(lambda v, pos: f"{v*100:.0f}%")
+    sns.despine(ax=ax)
+    return ax, agg.reset_index().rename(columns={"_group": group}), plt.gcf()

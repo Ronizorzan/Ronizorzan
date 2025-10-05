@@ -35,6 +35,8 @@ tratar_outliers(df, 'idade', 0, 110)
 tratar_outliers(df, 'tempoprofissao', 0, 70)
 corrigir_erros_digitacao(df, 'profissao', lista)
 
+df.to_csv('dados_tratados.csv', index=False) # Salva os dados tratados em arquivo CSV para análises
+
 
 #Separação da classe
 X = df.drop('classe', axis = 1)
@@ -70,11 +72,11 @@ y_teste = np.array([mapeamento[item] for item in y_teste])
 #Empilhamento das camadas das redes neurais
 model_seq = Sequential()
 model_seq.add(Dense(50, activation = 'relu', input_dim = X_treino.shape[1]))
-model_seq.add(Dropout(0.2))
+model_seq.add(Dropout(0.25))
 model_seq.add(Dense(50, activation = 'relu'))
-model_seq.add(Dropout(0.2))
+model_seq.add(Dropout(0.25))
 model_seq.add(Dense(50, activation = 'relu'))
-model_seq.add(Dropout(0.2))
+model_seq.add(Dropout(0.25))
 model_seq.add(Dense(1, activation = 'sigmoid'))
 
 model_seq.summary()

@@ -98,6 +98,15 @@ def load_encoders(df, nome_colunas):
 
     return df
 
+# Função para aplicar estilos
+def highlight_models(row):
+    color_map = {
+        'Baseline': 'background-color: red',
+        'XGB': 'background-color: orange',
+        'Redes Neurais': 'background-color: green'
+    }
+    return [color_map.get(row['Modelos'], '')] * len(row)
+
 
 
 
