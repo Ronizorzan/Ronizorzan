@@ -41,7 +41,7 @@ if processar:
         title="Inadimplência por Profissão",
         show_ci=False
     )
-        col1, col2 = st.columns([0.6,0.4])        
+        col1, col2 = st.columns([0.45,0.55])        
         with col1:
             st.pyplot(grafico, use_container_width=True)
         
@@ -77,7 +77,7 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
         title="Inadimplência por faixa de Renda",
         show_ci=False
     )
-        col1, col2 = st.columns([0.6,0.4])
+        col1, col2 = st.columns([0.45,0.55])
         with col1:            
             st.pyplot(grafico, use_container_width=True)
         
@@ -211,7 +211,7 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
         title="Inadimplência por Comprometimento Financeiro",
         show_ci=False
     )
-        col1, col2 = st.columns([0.6,0.4], gap="large")
+        col1, col2 = st.columns([0.45,0.55], gap="large")
         with col1:
             st.pyplot(grafico, use_container_width=True)
         

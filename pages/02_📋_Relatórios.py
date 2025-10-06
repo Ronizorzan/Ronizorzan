@@ -71,7 +71,7 @@ with st.sidebar:
 </style>
 
 <div class="footer">
-    <p><strong>Desenvolvido por Ronivan</strong></p>
+    <p><strong>Desenvolvido por: Ronivan</strong></p>
     <a href="https://github.com/Ronizorzan/Ronizorzan/blob/master/" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
     </a>
@@ -94,12 +94,11 @@ if visualizar:
     resultados, figura_impacto = calcular_e_plotar_impacto(matrix_xgb, matrix_seq, valor_medio_emprest, taxa_juros)         
     if visualizacao == "Impacto Financeiro": # Gráfico e relatório de impacto financeiro
         st.header("Decisões Inteligentes, Resultados reais")
-        st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)
-        col1, col2 = st.columns([0.45,0.55], gap="medium")                
+        st.markdown("<hr style='border: 1px solid #008000'>", unsafe_allow_html=True)
+        col1, col2 = st.columns([0.45,0.55], gap="large")                
         with col1:            
             st.pyplot(figura_impacto, use_container_width=True)                           
-            st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)            
-            #st.markdown("<div style='font-size: 35px; font-weight: bold; color: #FFFFFF'>O ponto de partida: ", unsafe_allow_html=True)
+            st.markdown("<hr style='border: 1px solid #008000'>", unsafe_allow_html=True)                        
             st.markdown("""**O ponto de partida:** A operação atual funciona, mas á um alto custo.
                         O gráfico revela a dura verdade: para cada :green[**5 reais**] ganhos,
                     aproximadamente :red[**3 reais**] são perdidos para a inadimplência.
@@ -115,14 +114,14 @@ if visualizar:
             diferenca_xgb = (resultados.iloc[2, 3]) - (resultados.iloc[1, 3])
             #st.markdown(f"<div style='font-size: 27px; font-weight: bold; color: #008000'>Retorno\
             #            líquido estimado utilizando o modelo: R$ {resultados.iloc[2,3]:,.2f} ", unsafe_allow_html=True)
-            st.metric(f"O método que utiliza redes neurais superou drasticamente o método atual de aprovação, alcançando um novo patamar de excelência.  \n\
-                      Lucro adicional gerado pela IA:",
+            st.metric(f"Lucro adicional gerado pela IA:",
                       value=f"+ R$ {diferenca_baseline:,.2f} ", delta=f"{(resultados.iloc[2,3] / resultados.iloc[0,3] )* 100:,.2f}%", delta_color="normal")
-            st.metric(f"Mesmo contra outro modelo avançado, a solução de Redes Neurais provou ser superior, garantindo a máxima eficiência.",
+            st.metric(f"Mesmo contra outro modelo avançado, Redes Neurais se mostrou superior, garantindo a máxima eficiência.",
                       value=f"+ R$ {diferenca_xgb:,.2f} ", delta=f"{(resultados.iloc[2,3] / resultados.iloc[1,3] )* 100:,.2f}%", delta_color="normal")
-            st.markdown("<hr style='border: 2px solid #008000'>", unsafe_allow_html=True)            
-            st.markdown("<div style='font-size: 35px; font-weight: bold; color: #FFFFFF'>Da Incerteza ao lucro ", unsafe_allow_html=True)
-            st.markdown("""<div style='font-size: 16px; font-weight: sans serif'>O modelo praticamente elimina os prejuízos com inadimplência,
+            st.markdown("<hr style='border: 1px solid #008000'>", unsafe_allow_html=True)            
+            st.markdown("<div style='font-size: 32px; font-weight: bold; color: #FFFFFF'>Da Incerteza ao lucro ", unsafe_allow_html=True)
+            st.markdown("""<div style='font-size: 14px; font-weight: sans serif'>O método com redes neurais superou drasticamente o método atual de aprovação, alcançando um novo patamar de excelência.
+                        O modelo praticamente elimina os prejuízos com inadimplência,
                         preservando o capital que antes era perdido com inadimplência. Com decisões de aprovação mais precisas,
                         o modelo campeão não só protege, mas impulsiona o retorno líquido.
                         Ele não apenas previu os maus pagadores com precisão cirúrgica, como também otimizou os ganhos com os bons clientes, encontrando o equilíbrio perfeito.""", unsafe_allow_html=True)                                            

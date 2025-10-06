@@ -82,7 +82,7 @@ with st.sidebar:
 </style>
 
 <div class="footer">
-    <p><strong>Desenvolvido por Ronivan Zorzan Barbosa</strong></p>
+    <p><strong>Desenvolvido por: Ronivan</strong></p>
     <a href="https://github.com/Ronizorzan/Ronizorzan/blob/master/" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
     </a>
@@ -147,15 +147,16 @@ if submit_button:
     df = seletor.transform(df)
     
     predictions = modelo.predict(df)
-    probabilidade = predictions[0][0] * 100
+    probabilidade = predictions[0][0] * 100    
     classe = "Bom" if probabilidade > 50 else "Ruim"
     if classe=="Bom":
-        st.success(f"Resultado: {classe}")
-        st.success(f'Probabilidade de inadimplência:{probabilidade:.2f}%')
-    else:
-        st.error(f"Resultado: {classe}")
         probabilidade = 100 - probabilidade
-        st.error(f"Probabilidade de inadimplência: {probabilidade:.2f}%")
+        st.success(f"Resultado: {classe}")
+        st.success(f'Risco de inadimplência:{probabilidade:.2f}%')
+    else:
+        probabilidade = 100 - probabilidade
+        st.error(f"Resultado: {classe}")        
+        st.error(f"Risco de inadimplência: {probabilidade:.2f}%")
 
     progresso.progress(100, "Dados processados com sucesso...")
 
