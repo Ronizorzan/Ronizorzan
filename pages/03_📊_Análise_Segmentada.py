@@ -39,9 +39,10 @@ if processar:
         sort_by="rate",
         ascending=False,
         title="Inadimplência por Profissão",
-        show_ci=False
+        show_ci=False,
+        figsize=(9,6)
     )
-        col1, col2 = st.columns([0.45,0.55])        
+        col1, col2 = st.columns([0.49,0.51])        
         with col1:
             st.pyplot(grafico, use_container_width=True)
         
@@ -75,9 +76,10 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
         sort_by="rate",
         ascending=False,
         title="Inadimplência por faixa de Renda",
-        show_ci=False
+        show_ci=False,
+        figsize=(8,6)
     )
-        col1, col2 = st.columns([0.45,0.55])
+        col1, col2 = st.columns([0.51,0.49])
         with col1:            
             st.pyplot(grafico, use_container_width=True)
         
@@ -118,7 +120,7 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
             st.pyplot(grafico, use_container_width=True)
         
         with col2:
-            st.markdown(""" **Observação-Chave:** Clientes casados compõem nosso segmento de maior risco :red[***(58.0%)**], com uma taxa de inadimplência que se aproxima do dobro 
+            st.markdown(""" **Observação-Chave:** Clientes casados compõem nosso segmento de maior risco :red[**(58.0%)**], com uma taxa de inadimplência que se aproxima do dobro 
                         da de clientes solteiros :green[**(29.2%)**], nosso grupo mais seguro atualmente.
 
 **O Valor da Análise:** Este insight desafia o senso comum de que "casado" equivale a maior estabilidade financeira. Para nossa carteira de clientes, essa condição sinaliza maior pressão financeira e risco.
@@ -141,7 +143,7 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
         min_count=15,
         sort_by="rate",
         ascending=False,
-        title="Inadimplência por Score de Crédito",
+        title="Inadimplência por Crédito Solicitado",
         show_ci=False
     )
         col1, col2 = st.columns([0.6,0.4])
@@ -209,9 +211,10 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
         sort_by="rate",
         ascending=False,
         title="Inadimplência por Comprometimento Financeiro",
-        show_ci=False
+        show_ci=False,
+        figsize=(8,6)
     )
-        col1, col2 = st.columns([0.45,0.55], gap="large")
+        col1, col2 = st.columns([0.51,0.49], gap="large")
         with col1:
             st.pyplot(grafico, use_container_width=True)
         

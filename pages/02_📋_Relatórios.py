@@ -116,7 +116,7 @@ if visualizar:
             #            líquido estimado utilizando o modelo: R$ {resultados.iloc[2,3]:,.2f} ", unsafe_allow_html=True)
             st.metric(f"Lucro adicional gerado pela IA:",
                       value=f"+ R$ {diferenca_baseline:,.2f} ", delta=f"{(resultados.iloc[2,3] / resultados.iloc[0,3] )* 100:,.2f}%", delta_color="normal")
-            st.metric(f"Mesmo contra outro modelo avançado, Redes Neurais se mostrou superior, garantindo a máxima eficiência.",
+            st.metric(f"Mesmo contra outro modelo avançado, Redes Neurais se mostrou superior, garantindo máxima eficiência.",
                       value=f"+ R$ {diferenca_xgb:,.2f} ", delta=f"{(resultados.iloc[2,3] / resultados.iloc[1,3] )* 100:,.2f}%", delta_color="normal")
             st.markdown("<hr style='border: 1px solid #008000'>", unsafe_allow_html=True)            
             st.markdown("<div style='font-size: 32px; font-weight: bold; color: #FFFFFF'>Da Incerteza ao lucro ", unsafe_allow_html=True)
