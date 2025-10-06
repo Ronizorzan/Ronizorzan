@@ -23,7 +23,7 @@ A análise segmentada revela :orange[**padrões ocultos por trás da inadimplên
 Com essa inteligência, saímos da reação para a **ação estratégica**: podemos ajustar políticas de crédito, direcionar o marketing e otimizar nosso portfólio de produtos de forma muito mais eficaz.
 
 ⚠️ **Ponto de Atenção:**
-É importante ressaltar que, embora um fator isolado (como `Renda`) mostre forte correlação com o risco, 
+É importante ressaltar que, embora um fator isolado (como `Profissão`) mostre forte correlação com o risco, 
                         a inadimplência é complexa e pode estar associada a outras variáveis, pois um cliente não é apenas sua profissão, mas a soma de todas as suas características.
                         A causa real do risco geralmente está na **combinação de múltiplos fatores** (ex: uma certa profissão *com* uma determinada faixa de renda e *um certo* valor solicitado).
 """)

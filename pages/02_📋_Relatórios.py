@@ -22,10 +22,10 @@ with st.sidebar:
     with st.expander("Configurações das visualizações", expanded=True):    
         visualizacao = st.radio("Selecione o tipo de visualização", ("Impacto Financeiro",  "Análise de ROI", "Redução da Inadimplência",
                                                                       "Captação de Bons Clientes", "Taxa de Aprovação"))
-        if visualizacao in ["Impacto Financeiro", "Análise de ROI"]:
-            taxa_juros = st.slider("Taxa média de juros", min_value=0, max_value=100, value=29,
-                                   help="Selecione a taxa de juros cobrada por empréstimo\
-                                    \ne veja como os valores se atualizam no gráfico") / 100
+        #if visualizacao in ["Impacto Financeiro", "Análise de ROI"]:
+        taxa_juros = st.slider("Taxa média de juros", min_value=0, max_value=100, value=29,
+                                help="Selecione a taxa de juros cobrada por empréstimo\
+                                \ne veja como os valores se atualizam no gráfico") / 100
     visualizar = st.button("Visualizar", type="primary", use_container_width=True)   
 
     st.markdown("---")
@@ -127,10 +127,10 @@ if visualizar:
                         Ele não apenas previu os maus pagadores com precisão cirúrgica, como também otimizou os ganhos com os bons clientes, encontrando o equilíbrio perfeito.""", unsafe_allow_html=True)                                            
     
     if visualizacao== "Análise de ROI":        
-        col1, col2 = st.columns([0.45,0.55], gap="large")        
+        col1, col2 = st.columns([0.45,0.55], gap="medium")        
         with col1:            
-            st.header("Qual abordagem entrega mais valor?")
-            st.markdown("<hr style='border: 1px solid green'>", unsafe_allow_html=True)
+            st.header("**Qual abordagem entrega mais valor?**")
+            #st.markdown("<hr style='border: 1px solid green'>", unsafe_allow_html=True)
             grafico_roi = plot_roi(resultados)            
             st.pyplot(grafico_roi, use_container_width=True)
             st.markdown("<hr style='border: 1px solid green'>", unsafe_allow_html=True)
