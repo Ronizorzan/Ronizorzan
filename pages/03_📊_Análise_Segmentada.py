@@ -133,7 +133,7 @@ Essa análise permite criar uma "Inteligência de Mercado", Mapeando o Risco por
 """)
 
     if segmentacao=='Valor Solicitado':
-        st.header("Emprétimos Menores podem significar Risco Menor.")
+        st.header("Emprétimos Menores podem significar Risco Menor.", divider="orange")
         ax, resumo, grafico = plot_rate_by_group(
         df=data,
         target="classe",

@@ -1,4 +1,5 @@
-#Importação das bibliotecas
+# === API Simples para prototipagem de modelo de classificação binária ===
+# === Importação das bibliotecas ===
 from flask import Flask, request, jsonify
 import pandas as pd
 from funcoes import *
@@ -8,11 +9,11 @@ from utilidades import *
 
 
 
-#Implantação da API
+# Implantação da API
 try:
     app = Flask(__name__)
-    modelo = load_model('meu_modelo.keras')
-    seletor = joblib.load("objects\seletor.joblib")
+    modelo = load_model('meu_modelo.keras') 
+    seletor = joblib.load("objects/seletor.joblib")
 
     
     @app.route('/predict', methods = ['POST'])
@@ -25,15 +26,14 @@ try:
     
         predictions = modelo.predict(df)
         return jsonify(predictions.tolist())
-    
-    
-    if __name__ == '__main__':
-        app.run('0.0.0.0', port = 5000, debug = False)
-    
-    
+           
+        
     
 except Exception as e:
     print(f'Erro ao processar os dados: {e}')
-        
+
+
+if __name__ == '__main__':
+        app.run('0.0.0.0', port = 5000, debug = False)
     
     

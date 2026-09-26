@@ -1,4 +1,11 @@
+# Arquivo de configuração do banco de dados
 config.yaml
 
+# Arquivos Python
+__pycache__/
+*.ipynb_checkpoints
+
+# Dados
+*.csv
 
 

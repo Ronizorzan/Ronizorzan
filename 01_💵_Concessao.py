@@ -86,7 +86,7 @@ with st.sidebar:
     <a href="https://github.com/Ronizorzan/Ronizorzan/blob/master/" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
     </a>
-    <a href="https://www.linkedin.com/in/ronivan-zorzan-barbosa" target="_blank">
+    <a href="https://www.linkedin.com/in/ronibarbosatech" target="_blank">
         <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
     </a>
     <a href="mailto:ronizorzan1992@gmail.com" target="_blank">
@@ -137,7 +137,7 @@ if submit_button:
     'valortotalbem': [valortotalbem]
     }
 
-    caminho_modelo = 'meu_modelo.h5'
+    caminho_modelo = 'objects/meu_modelo.h5'
     modelo = load_model(caminho_modelo) # Carregamento do modelo treinado
     seletor = joblib.load("objects/seletor.joblib") # Carregamento do seletor de atributos
     

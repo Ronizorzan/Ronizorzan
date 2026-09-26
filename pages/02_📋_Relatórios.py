@@ -25,7 +25,8 @@ with st.sidebar:
         #if visualizacao in ["Impacto Financeiro", "Análise de ROI"]:
         taxa_juros = st.slider("Taxa média de juros", min_value=0, max_value=100, value=29,
                                 help="Selecione a taxa de juros cobrada por empréstimo\
-                                \ne veja como os valores se atualizam no gráfico") / 100
+                                \ne veja como os valores se atualizam no gráfico\
+                                \n(Só funciona em Impacto Financeiro e Análise de ROI)") / 100
     visualizar = st.button("Visualizar", type="primary", use_container_width=True)   
 
     st.markdown("---")
@@ -167,7 +168,7 @@ Este gráfico não apenas mostra números — ele conta uma história de evoluç
     if visualizacao == "Redução da Inadimplência": # Gráfico e relatório de Inadimplência
         st.header("Redução da Inadimplência", anchor="red_inadimplencia")
         st.markdown("<hr style='border: 2px solid #2020df'>", unsafe_allow_html=True)
-        col1, col2 = st.columns([0.6, 0.4], gap="medium")
+        col1, col2 = st.columns([0.55, 0.45], gap="medium")
         with col1:            
             figura_inad = plot_inadimplencia(resultado_xgb['inadimplencia_sem_modelos'], 
                                          resultado_xgb['inadimplencia_prevista'], resultado_seq['inadimplencia_prevista'])
