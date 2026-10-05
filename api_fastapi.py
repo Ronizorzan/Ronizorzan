@@ -34,6 +34,7 @@ class CreditData(BaseModel):
     dependentes: int
     valorsolicitado: float
     valortotalbem: float
+    proporcaosolicitadototal: float
 
 
 # === Funções Auxiliares ===
@@ -56,10 +57,10 @@ def get_feature_selector():
 
 def get_model():
     """
-    Carrega o modelo de classificação binária treinado a partir do arquivo .h5.
+    Carrega o modelo de classificação binária treinado a partir do arquivo .keras.
     Retorna o modelo carregado.
     """
-    model = load_model("objects/meu_modelo.h5")
+    model = load_model("objects/meu_modelo.keras")
     return model
 
 
@@ -103,6 +104,7 @@ async def predict_credit_risk(data: CreditData):
         "produto",
         "valorsolicitado",
         "valortotalbem",
+        "proporcaosolicitadototal",
     ]
     df = pd.DataFrame([data.model_dump()])[feature_order]
     df = load_scalers(
@@ -114,6 +116,7 @@ async def predict_credit_risk(data: CreditData):
             "dependentes",
             "valorsolicitado",
             "valortotalbem",
+            "proporcaosolicitadototal",
         ],
     )
     df = load_encoders(

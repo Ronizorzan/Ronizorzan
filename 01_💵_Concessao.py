@@ -134,15 +134,16 @@ if submit_button:
     'estadocivil': [estadocivil],
     'produto': [produto],
     'valorsolicitado': [valorsolicitado],
-    'valortotalbem': [valortotalbem]
+    'valortotalbem': [valortotalbem],
+    'proporcaosolicitadototal': [valorsolicitado / valortotalbem]
     }
 
-    caminho_modelo = 'objects/meu_modelo.h5'
+    caminho_modelo = 'objects/meu_modelo.keras'
     modelo = load_model(caminho_modelo) # Carregamento do modelo treinado
     seletor = joblib.load("objects/seletor.joblib") # Carregamento do seletor de atributos
     
     df = pd.DataFrame(dados_novos)
-    df = load_scalers(df,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem'] )
+    df = load_scalers(df,['tempoprofissao','renda','idade','dependentes','valorsolicitado','valortotalbem', 'proporcaosolicitadototal'] )
     df = load_encoders(df, ['profissao', 'tiporesidencia',  'escolaridade','score','estadocivil','produto'])
     df = seletor.transform(df)
     

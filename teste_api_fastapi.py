@@ -51,6 +51,7 @@ SAMPLE_PAYLOADS = [
         "produto": "DoubleDuty",
         "valorsolicitado": 139244.0,
         "valortotalbem": 320000.0,
+        "proporcaosolicitadototal": 0.4351375
     },
     {
         "profissao": "Médico",
@@ -65,6 +66,7 @@ SAMPLE_PAYLOADS = [
         "produto": "SpeedFury",
         "valorsolicitado": 100000.0,
         "valortotalbem": 200000.0,
+        "proporcaosolicitadototal": 0.5
     },
     {
         "profissao": "Dentista",
@@ -79,6 +81,7 @@ SAMPLE_PAYLOADS = [
         "produto": "ElegantCruise",
         "valorsolicitado": 50000.0,
         "valortotalbem": 200000.0,
+        "proporcaosolicitadototal": 0.25
     },
     {
         "profissao": "Contador",
@@ -93,6 +96,7 @@ SAMPLE_PAYLOADS = [
         "produto": "TrailConqueror",
         "valorsolicitado": 200000.0,
         "valortotalbem": 300000.0,
+        "proporcaosolicitadototal": 0.6666666666666666
     },
 ]
 
